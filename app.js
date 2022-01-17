@@ -29,7 +29,7 @@ main_forms.onsubmit = (e) => {
     const email = document.querySelector('#email').value;
     const Selects = document.querySelector('#Selects').value;
     const birth = document.querySelector('#birth').value;
-    const genders = document.querySelector('input[type="radio"]:checked').value;
+    const genders = document.querySelector('input[type="radio"]:checked')?.value;
     const numbers = document.querySelector('#numbers').value;
     const skill = document.querySelectorAll('input[type="checkbox"]:checked');
     const result = document.querySelector('.result');
@@ -40,12 +40,69 @@ main_forms.onsubmit = (e) => {
     }
 
     if(names && email && Selects && birth && genders && numbers && skills){
-        result.innerHTML = `<p class = 'alert alert-success'>Hi <b>${names}</b>, your email is <b>${email}</b> and you are form <b>${Selects}</b>. You born in <b>${birth}</b> you are a <b>${genders}</b> and your phone number is <b>${numbers}</b>. Your skills is <b>${skills}</b><button class = 'close' data-dismiss = 'alert'>&times;<button></p>`;
+        result.innerHTML = `<p class = 'alert alert-success'>Hi <b>${names}</b>, your email is <b>${email}</b> and you are form <b>${Selects}</b>. You born in <b>${birth}</b> you are a <b>${genders}</b> and your phone number is <b>${numbers}</b>. Your skills is <b>${skills}</b><button type="button" class="btn-close" aria-label="close"></button></p>`;
     }else{
         result.innerHTML = validation('All fields are requird', 'danger');
     }
-
 }
 
 
 
+const start = document.querySelector('.start');
+const stops = document.querySelector('.stop');
+const digit = document.querySelector('.digit');
+const counter = document.querySelector('.counter');
+const progress_bar = document.querySelector('.progress_bar');
+
+let cler_time;
+let count
+start.onclick = () => {
+    count = digit.value;
+
+    cler_time = setInterval(() => {
+        counter.innerHTML = count;
+        bar_width = loader(digit.value, count);
+        progress_bar.style.width = `${bar_width}%`;
+        if(bar_width < 75 && bar_width > 50){
+            progress_bar.style.backgroundColor = 'blue'
+        }else if(bar_width <= 50 && bar_width > 30){
+            progress_bar.style.backgroundColor = 'yellow'
+        }else if(bar_width <= 30){
+            progress_bar.style.backgroundColor = 'red'
+        }
+        count == 0 ? clearInterval(cler_time) : '' ;
+        // if(count == 0){
+        //     clearInterval(cler_time);
+        // }else{
+        // } 
+        count--;
+    }, 1000);
+    // digit.value = '';
+}
+
+stops.onclick = () =>{
+    clearInterval(cler_time);
+}
+
+
+
+const list_item = document.querySelector('#list_item');
+const addbtn = document.querySelector('.addbtn');
+const lists = document.querySelector('.lists');
+
+
+addbtn.onclick = () =>{
+
+    const listitem =document.createElement('li')
+    listitem.innerText = list_item.value;
+    listitem.className = 'list-group-item';
+    lists.appendChild(listitem);
+    list_item.value = ''
+    
+}
+
+
+
+const sun_number =document.getElementById('sun_number');
+const sun_check =document.getElementsByClassName('sun_check');
+const sub_result =document.getElementsByClassName('sub_result');
