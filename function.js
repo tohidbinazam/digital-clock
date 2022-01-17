@@ -1,7 +1,7 @@
 function xero (time){
     return time < 10 ? '0'+time : time;
 }
-function validation(mas , alert){
+function validation(mas , alert = 'denger'){
     return `<p class = 'alert alert-${alert}'>${mas}</p>`;
 }
 function loader(srart_val, current_val){

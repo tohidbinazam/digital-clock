@@ -42,7 +42,7 @@ main_forms.onsubmit = (e) => {
     if(names && email && Selects && birth && genders && numbers && skills){
         result.innerHTML = `<p class = 'alert alert-success'>Hi <b>${names}</b>, your email is <b>${email}</b> and you are form <b>${Selects}</b>. You born in <b>${birth}</b> you are a <b>${genders}</b> and your phone number is <b>${numbers}</b>. Your skills is <b>${skills}</b><button type="button" class="btn-close" aria-label="close"></button></p>`;
     }else{
-        result.innerHTML = validation('All fields are requird', 'danger');
+        result.innerHTML = validation('All fields are requird', 'info');
     }
 }
 
@@ -102,7 +102,34 @@ addbtn.onclick = () =>{
 }
 
 
+const resu_name = document.getElementById('res_name');
+const subjects = document.getElementById('subjects');
+const sun_number = document.getElementById('sun_number');
+const sub_check = document.getElementsByClassName('sub_check');
+const sub_result = document.getElementsByClassName('sub_result');
 
-const sun_number =document.getElementById('sun_number');
-const sun_check =document.getElementsByClassName('sun_check');
-const sub_result =document.getElementsByClassName('sub_result');
+
+sub_check.onclick = () => {
+    let res_name = resu_name.value;
+    let res_subject = subjects.value;
+    let marks = sun_number.value;
+    let result
+    if(marks >= 0 && marks < 33){
+        result = `<p class = 'alert alert-denger'>You are fail in this exam</p>`;
+    }else if(marks >= 33 && marks < 50){
+        result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 2.00 in ${res_subject}</p>`;
+    }else if(marks >= 50 && marks < 60){
+        result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 3.00 in ${res_subject}</p>`;
+    }else if(marks >= 60 && marks < 70){
+        result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 3.50 in ${res_subject}</p>`;
+    }else if(marks >= 70 && marks < 80){
+        result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 4.00 in ${res_subject}</p>`;
+    }else if(marks >= 80 && marks <= 100){
+        result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 5.00 in ${res_subject}</p>`;
+    }else{
+        result = `<p class = 'alert alert-denger'>Hi,${res_name} You input wrong value</p>`;
+    }
+    sub_result.innerHTML = result;
+
+}
+
