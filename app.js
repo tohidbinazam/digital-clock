@@ -105,8 +105,8 @@ addbtn.onclick = () =>{
 const resu_name = document.getElementById('res_name');
 const subjects = document.getElementById('subjects');
 const sun_number = document.getElementById('sun_number');
-const sub_check = document.getElementsByClassName('sub_check');
-const sub_result = document.getElementsByClassName('sub_result');
+const sub_check = document.querySelector('.sub_check');
+const sub_result = document.querySelector('.sub_result');
 
 
 sub_check.onclick = () => {
