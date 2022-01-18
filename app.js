@@ -115,7 +115,7 @@ sub_check.onclick = () => {
     let marks = sun_number.value;
     let result
     if(marks >= 0 && marks < 33){
-        result = `<p class = 'alert alert-denger'>You are fail in this exam</p>`;
+        result = `<p class = 'alert alert-danger'>You are fail in this exam</p>`;
     }else if(marks >= 33 && marks < 50){
         result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 2.00 in ${res_subject}</p>`;
     }else if(marks >= 50 && marks < 60){
@@ -127,7 +127,7 @@ sub_check.onclick = () => {
     }else if(marks >= 80 && marks <= 100){
         result = `<p class = 'alert alert-success'>Hi,${res_name} You get GPA 5.00 in ${res_subject}</p>`;
     }else{
-        result = `<p class = 'alert alert-denger'>Hi,${res_name} You input wrong value</p>`;
+        result = `<p class = 'alert alert-danger'>Hi,${res_name} You input wrong value</p>`;
     }
     sub_result.innerHTML = result;
 
