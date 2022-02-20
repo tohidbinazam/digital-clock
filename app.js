@@ -54,34 +54,43 @@ const digit = document.querySelector('.digit');
 const counter = document.querySelector('.counter');
 const progress_bar = document.querySelector('.progress_bar');
 
+
 let cler_time;
-let count
 start.onclick = () => {
-    count = digit.value;
+    let count = digit.value;
+    start.style.pointerEvents = 'none';
+    digit.style.pointerEvents = 'none';
 
     cler_time = setInterval(() => {
         counter.innerHTML = count;
         bar_width = loader(digit.value, count);
         progress_bar.style.width = `${bar_width}%`;
-        if(bar_width < 75 && bar_width > 50){
-            progress_bar.style.backgroundColor = 'blue'
-        }else if(bar_width <= 50 && bar_width > 30){
-            progress_bar.style.backgroundColor = 'yellow'
-        }else if(bar_width <= 30){
-            progress_bar.style.backgroundColor = 'red'
+        if(bar_width <= 100 && bar_width > 75){
+            progress_bar.style.backgroundColor = 'green';
+        }else if(bar_width <= 75 && bar_width > 50){
+            progress_bar.style.backgroundColor = 'blue';
+        }else if(bar_width <= 50 && bar_width > 25){
+            progress_bar.style.backgroundColor = 'yellow';
+        }else if(bar_width <= 25){
+            progress_bar.style.backgroundColor = 'red';
         }
-        count == 0 ? clearInterval(cler_time) : '' ;
-        // if(count == 0){
-        //     clearInterval(cler_time);
-        // }else{
-        // } 
+        // count == 0 ? clearInterval(cler_time)  : '' ;
+        if(count == 0){
+            clearInterval(cler_time);
+            start.style.pointerEvents = 'auto';
+            digit.style.pointerEvents = 'auto';
+        }else{
+        }
         count--;
     }, 1000);
     // digit.value = '';
+
 }
 
 stops.onclick = () =>{
     clearInterval(cler_time);
+    start.style.pointerEvents = 'auto';
+    digit.style.pointerEvents = 'auto';
 }
 
 
@@ -93,7 +102,7 @@ const lists = document.querySelector('.lists');
 
 addbtn.onclick = () =>{
 
-    const listitem =document.createElement('li')
+    const listitem = document.createElement('li');
     listitem.innerText = list_item.value;
     listitem.className = 'list-group-item';
     lists.appendChild(listitem);
@@ -110,7 +119,13 @@ const sub_result = document.querySelector('.sub_result');
 
 
 sub_check.onclick = () => {
+
+
+    // Always .value call into the all addEventListener function it is 
+    // const res_name = document.getElementById('res_name').value;   or
     let res_name = resu_name.value;
+
+
     let res_subject = subjects.value;
     let marks = sun_number.value;
     let result
